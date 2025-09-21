@@ -1,11 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8">
-    <title>Meu site no GitHub Pages</title>
-  </head>
-  <body>
-    <h1>Olá, mundo!</h1>
-    <p>Site publicado com GitHub Pages.</p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site no GitHub Pages</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Olá, mundo! 🚀</h1>
+        <p>Este site está hospedado no GitHub Pages.</p>
+        <p id="data-hora"></p>
+    </header>
+
+    <main>
+        <button id="botao">Clique em mim</button>
+    </main>
+
+    <footer>
+        <p>Feito com ❤️ usando GitHub Pages</p>
+    </footer>
+
+    <!-- Script do botão -->
+    <script>
+        document.getElementById("botao").addEventListener("click", function() {
+            alert("Você clicou no botão! 🎉");
+        });
+    </script>
+
+    <!-- Script para mostrar data e hora -->
+    <script>
+        function atualizarDataHora() {
+            const agora = new Date();
+            const dia = String(agora.getDate()).padStart(2, '0');
+            const mes = String(agora.getMonth() + 1).padStart(2, '0');
+            const ano = agora.getFullYear();
+            const hora = String(agora.getHours()).padStart(2, '0');
+            const minuto = String(agora.getMinutes()).padStart(2, '0');
+            const segundo = String(agora.getSeconds()).padStart(2, '0');
+
+            document.getElementById('data-hora').textContent =
+                `${dia}/${mes}/${ano} ${hora}:${minuto}:${segundo}`;
+        }
+
+        setInterval(atualizarDataHora, 1000);
+        atualizarDataHora();
+    </script>
+
+    <!-- Script para bloquear botão direito e atalhos -->
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('Função desativada neste site 🚫');
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+                e.preventDefault();
+                alert('Acesso negado 🚫');
+            }
+            if ((e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || e.key === 'F12') {
+                e.preventDefault();
+                alert('Ferramentas de desenvolvedor desativadas 🚫');
+            }
+        });
+    </script>
+</body>
 </html>
